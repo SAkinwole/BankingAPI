@@ -50,10 +50,19 @@ namespace BankingAPI.Services.Implementation
 
             Byte[] pinHash, pinSalt;
             CreatePinHash(Pin, out pinHash, out pinSalt);
-
+            
+            account.PinSalt = pinSalt;
+            account.PinHash = pinHash;
 
             _context.Accounts.Add(account);
-            _context.SaveChanges();
+            try
+            {
+                int save = _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
             return account;
         }
@@ -127,7 +136,7 @@ namespace BankingAPI.Services.Implementation
                 accountToUpdate.PinHash = account.PinHash;
                 accountToUpdate.PinSalt = account.PinSalt;
             }
-            accountToUpdate.DateLastUpdated = DateTime.Now();
+            accountToUpdate.DateLastUpdated = DateTime.Now;
 
             _context.Accounts.Update(accountToUpdate);
             _context.SaveChanges();

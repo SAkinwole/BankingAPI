@@ -24,7 +24,8 @@ namespace BankingAPI.Models
         Random rand = new Random();
         public Account()
         {
-            AccountNumberGenerated = "234" + Convert.ToString((long)rand.NextDouble() * 9_000_000_000L + 1_000_000_000L);
+            //AccountNumberGenerated = "234" + Convert.ToString((long) Math.Floor(rand.NextDouble() * 7_000_000_000L + 1_000_000_000L));
+            AccountNumberGenerated = "234" + rand.Next(1_000_000, 10_000_000).ToString();
             //AccountName = FirstName + LastName;
             AccountName = $"{FirstName} {LastName}";
         }
