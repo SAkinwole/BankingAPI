@@ -1,6 +1,7 @@
 using BankingAPI.DataContext;
 using BankingAPI.Services.Implementation;
 using BankingAPI.Services.Interfaces;
+using BankingAPI.Utils;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 
 builder.Services.AddControllers();

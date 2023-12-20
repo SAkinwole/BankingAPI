@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BankingAPI.Models
@@ -16,7 +17,9 @@ namespace BankingAPI.Models
         public decimal CurrentAccountBalance { get; set; }
         public AccountType AccountType { get; set; }
         public string AccountNumberGenerated { get; set; }
+        [JsonIgnore]
         public byte[] PinHash { get; set; }
+        [JsonIgnore]
         public byte[] PinSalt { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateLastUpdated { get; set; }

@@ -11,7 +11,7 @@ namespace BankingAPI.Profiles
             CreateMap<RegisterAccountDto, Account>().ReverseMap();
             CreateMap<UpdateAccountDto, Account>().ReverseMap();
             CreateMap<GetAccountDto, Account>().ReverseMap();
-            
+            CreateMap<CreateTransactionDto, Transaction>().ReverseMap();
         }
     }
 }
